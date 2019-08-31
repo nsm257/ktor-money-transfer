@@ -23,7 +23,7 @@ fun Route.accounts(accountService: AccountService) {
 
         get("/{accountNumber}") {
             val accountNumber = call.parameters["accountNumber"] ?: throw IllegalStateException("Must provide account number")
-            call.respond(accountService.getAccount(accountNumber))
+            call.respond(HttpStatusCode.OK, accountService.getAccount(accountNumber))
         }
 
         post("/transferMoney") {

@@ -7,5 +7,5 @@ object Customers : Table() {
     val name = varchar("name", 255)
     val age = integer("age")
     val city = varchar("city", length = 50)
-    var phoneNumber = varchar("phoneNumber", length = 15).uniqueIndex()
+    var phoneNumber = varchar("phoneNumber", length = 15)
 }

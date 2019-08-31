@@ -5,4 +5,6 @@ data class Account (
     var customerId: Long,
     var amount: Double,
     var accountNumber: String?
-)
+) {
+    constructor() : this(0, 121, 0.0, "abc")
+}

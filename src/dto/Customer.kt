@@ -6,4 +6,6 @@ data class Customer (
     var age: Int,
     var city: String,
     var phoneNumber: String
-)
+) {
+    constructor(): this(null, "", 0, "", "")
+}
