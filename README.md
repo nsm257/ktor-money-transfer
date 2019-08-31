@@ -63,7 +63,6 @@ Shortcut (to run the application with tests and coverage)
 In all the above examples, the application starts on following host:port - [http://localhost:7777](http://localhost:7777)
 
 ## Steps to test "transfer money" application (manually)
-
 1. Create customer(s)
 2. Create two accounts, using the customer id(s) created in step 1
 3. Transfer money using account numbers created in step 2.
