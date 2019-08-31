@@ -2,7 +2,7 @@
 Ktor demo project for building a simple money tansfer application
 
 ## Overview
-Simple Application to demonstrate money transfer between internal accounts, using Kotlin with Ktor Framework, Exposed as ORM and H2 as in memory database
+Simple Application to demonstrate money transfer between internal accounts, using Kotlin with Ktor Framework, 'Exposed' as ORM and H2 as in memory database
 
 ## Endpoints
 * `Post` /customers - Create new Customer
