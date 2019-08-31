@@ -2,6 +2,7 @@ package service
 
 
 import com.example.dto.Customer
+import com.example.exceptions.CustomerNotFoundException
 import com.example.exceptions.InvalidAgeException
 import com.example.service.CustomerService
 import com.example.service.CustomerServiceImpl
@@ -63,13 +64,26 @@ class CustomerServiceImplTest: ServerTest() {
     inner class ErrorCases {
 
         @Test
-        fun testCreateCustomerWithInvalidAge() = runBlocking {
+        fun testAddCustomerWithInvalidAge() = runBlocking {
 
             val exception = assertThrows(InvalidAgeException::class.java) {
                 customerService.addCustomer(Customer(0, "John Doe", -25, "London", "1234567890"))
             }
 
             assertEquals("Customer age must be greater than 0", exception.message)
+            Unit
+        }
+
+        @Test
+        fun testGetInvalidCustomer() = runBlocking {
+
+            val custId = 1L
+
+            val exception = assertThrows(CustomerNotFoundException::class.java) {
+                customerService.getCustomer(custId)
+            }
+
+            assertEquals("Customer with Id: $custId cannot be found", exception.message)
             Unit
         }
     }

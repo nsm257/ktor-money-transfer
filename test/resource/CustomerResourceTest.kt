@@ -9,6 +9,8 @@ import org.junit.jupiter.api.Test
 import io.restassured.RestAssured.*
 import io.restassured.http.ContentType
 import org.assertj.core.api.Assertions.assertThat
+import org.hamcrest.CoreMatchers
+import org.hamcrest.CoreMatchers.equalTo
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
 import org.junit.jupiter.api.Nested
@@ -34,6 +36,7 @@ class CustomerResourceTest : ServerTest() {
         assertThat(created.phoneNumber).isEqualTo(newCustomer.phoneNumber)
 
         assertThat(created).isEqualTo(retrieved)
+        Unit
     }
 
     @Test
@@ -54,6 +57,7 @@ class CustomerResourceTest : ServerTest() {
         assertThat(customers).extracting("age").containsExactlyInAnyOrder(customer1.age, customer2.age)
         assertThat(customers).extracting("city").containsExactlyInAnyOrder(customer1.city, customer2.city)
         assertThat(customers).extracting("phoneNumber").containsExactlyInAnyOrder(customer1.phoneNumber, customer2.phoneNumber)
+        Unit
     }
 
     @Nested
@@ -61,9 +65,30 @@ class CustomerResourceTest : ServerTest() {
 
         @Test
         fun testGetInvalidCustomer() {
-            get("/widget/{id}", "1")
+
+            val custId = 1L
+            get("/customers/{id}", custId)
                 .then()
                 .statusCode(404)
+                .body(equalTo("Customer with Id: $custId cannot be found"))
+            Unit
+        }
+
+        @Test
+        fun testAddCustomerWithInvalidAge() {
+
+            val customer = Customer(0, "John Doe", -25, "London", "1234567890")
+
+            val received = given()
+                .contentType(ContentType.JSON)
+                .body(customer)
+                .When()
+                .post("/customers/")
+                .then()
+                .statusCode(400)
+                .body(equalTo("Customer age must be greater than 0"))
+
+            Unit
         }
     }
 

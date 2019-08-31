@@ -67,6 +67,7 @@ class ConcurrentTransferTest : ServerTest() {
         sleep(1000)
         assertThat(accountService.getAccount(fromAccount.accountNumber!!).amount).isEqualTo(fromAccount.amount + NUM_OF_MONEY_TRANSFERS)
         assertThat(accountService.getAccount(toAccount.accountNumber!!).amount).isEqualTo(toAccount.amount - NUM_OF_MONEY_TRANSFERS)
+        Unit
     }
 
     private fun addCustomer(customer: Customer): Customer {
