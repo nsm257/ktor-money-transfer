@@ -4,10 +4,8 @@ package service
 import com.example.dto.Customer
 import com.example.exceptions.CustomerNotFoundException
 import com.example.exceptions.InvalidAgeException
-import com.example.service.CustomerService
 import com.example.service.CustomerServiceImpl
 import common.ServerTest
-//import common.ServerTest
 import kotlinx.coroutines.runBlocking
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertEquals

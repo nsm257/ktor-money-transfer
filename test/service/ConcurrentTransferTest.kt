@@ -4,7 +4,6 @@ import com.example.dto.Account
 import com.example.dto.Customer
 import com.example.dto.MoneyTransferRequestDto
 import com.example.dto.MoneyTransferResponseDto
-import com.example.service.AccountService
 import com.example.service.AccountServiceImpl
 import com.example.service.CustomerServiceImpl
 import common.ServerTest

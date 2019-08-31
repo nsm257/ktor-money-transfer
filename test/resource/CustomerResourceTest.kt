@@ -1,21 +1,13 @@
 package resource
 
 import com.example.dto.Customer
-import com.example.model.Accounts
-import com.example.model.Customers
-
 import common.ServerTest
 import org.junit.jupiter.api.Test
 import io.restassured.RestAssured.*
 import io.restassured.http.ContentType
 import org.assertj.core.api.Assertions.assertThat
-import org.hamcrest.CoreMatchers
 import org.hamcrest.CoreMatchers.equalTo
-import org.jetbrains.exposed.sql.SchemaUtils
-import org.jetbrains.exposed.sql.transactions.transaction
 import org.junit.jupiter.api.Nested
-import org.junit.jupiter.api.AfterEach
-
 
 class CustomerResourceTest : ServerTest() {
 

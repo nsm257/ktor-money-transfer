@@ -216,7 +216,7 @@ class AccountServiceImplTest : ServerTest() {
         return customerService.addCustomer(customer)
     }
 
-    private suspend fun addAccount(account: Account): Account {
+    private fun addAccount(account: Account): Account {
         return accountService.createAccount(account)
     }
 }
